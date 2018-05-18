@@ -1,0 +1,28 @@
+{
+  "name": "my-inbox-node",
+  "version": "1.0.0",
+  "description": "Node broker to subscribe and publish myinbox data.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renanbrando/my-inbox-node.git"
+  },
+  "keywords": [
+    "node",
+    "mqtt",
+    "firebase"
+  ],
+  "author": "Renan Ribeiro Brando",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/renanbrando/my-inbox-node/issues"
+  },
+  "homepage": "https://github.com/renanbrando/my-inbox-node#readme",
+  "dependencies": {
+    "firebase-admin": "^5.12.1",
+    "mqtt": "^2.18.0"
+  }
+}
