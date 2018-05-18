@@ -11,8 +11,8 @@ admin.initializeApp({
 
 client.on('connect', function () {
 
-    console.log('Oh Glorious Day! I have connected to eclipse broker. ')
-    client.subscribe('fiapmob')
+    console.log('Oh Glorious Day! I have connected to eclipse broker.')
+    client.subscribe('myinbox')
 
 });
 
