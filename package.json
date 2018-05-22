@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/renanbrando/my-inbox-node#readme",
   "dependencies": {
-    "firebase-admin": "^5.12.1",
-    "mqtt": "^2.18.0"
+    "mqtt": "^2.18.0",
+    "node-gcm": "^1.0.1"
   }
 }

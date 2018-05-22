@@ -1,13 +1,8 @@
 var mqtt = require('mqtt');
-var admin = require("firebase-admin");
+var gcm = require('node-gcm');
 
-var config = require("./firebase-config.json");
+var sender = new gcm.Sender('AIzaSyDVSUQijfKoGBxIXJ7W4SBBVJKAeMP6VpM');
 var client = mqtt.connect('mqtt://iot.eclipse.org');
-
-admin.initializeApp({
-    credential: admin.credential.cert(config),
-    databaseURL: "mydatabase"
-});
 
 client.on('connect', function () {
 
@@ -23,16 +18,21 @@ client.on('message', function (topic, message) {
 
     client.end();
 
-    // sending push notification
-    admin.messaging().send({
-        data: message.toString(),
-        topic: 'myinbox'
-    })
-    .then((response) => {
-        console.log('pushed successfully! ', response)
-    })
-    .catch((error) => {
-        console.log('error while pushing: ', error)
+    // Prepare a message to be sent
+    var message = new gcm.Message();
+    
+    // as object
+    message.addNotification({
+        title: 'New Inbox!',
+        body: 'You just received a new letter.',
+        icon: 'ic_launcher'
+    });
+    
+    
+    // Actually send the message
+    sender.send(message, { topic: 'myinbox' }, function (err, response) {
+        if (err) console.error(err);
+        else console.log(response);
     });
 
 });
